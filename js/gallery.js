@@ -76,6 +76,7 @@ function markupGallery(images) {
     data-source="${original}"
     alt="${description}"
     width="360"
+    height="200"
     />
     </a>
     </li>`).join("");
@@ -88,9 +89,16 @@ galleryList.addEventListener("click", clickGallery);
 function clickGallery(event) {
     event.preventDefault();
 
-    const clickedImage = event.target.closest(".gallery-image");
-    if (!clickedImage) return; // Перевіряємо, що клікнув саме на зображення
+    if(!event.target.classList.contains("gallery-image")){
+        return;
+    }
 
-    const originalSrc = clickedImage.dataset.source;
-    console.log("Оригінальне зображення:", originalSrc);
+    const originalSrc = event.target.dataset.source;
+    // console.log(originalSrc);
+
+    const instance = basicLightbox.create(`
+        <img src="${originalSrc}" width="1112" height="640">
+    `)
+    
+    instance.show()
 }

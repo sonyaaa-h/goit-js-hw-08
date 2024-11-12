@@ -13,7 +13,18 @@ a {
 }
 
 .gallery {
+    width: 1128px;
     display: flex;
-    gap: 24px;
     flex-wrap: wrap;
+    gap: 24px;
+    margin: auto;
+}
+
+.gallery-item {
+    transition: transform 0.3s;
+}
+
+.gallery-item:hover,
+.gallery-item:focus {
+    transform: scale(1.05);
 }
